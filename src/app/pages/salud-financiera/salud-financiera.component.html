@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col col-12 text-center">
+      <h1>Consulta de Saludo Financiera</h1>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col col-12">
+      <form action="" [formGroup]="frmConsulta" >
+      <div class="input-group mb-3">
+        <input formControlName="code" type="text" class="form-control" placeholder="Buscar moneda" aria-label="Buscar moneda" aria-describedby="button-addon2">
+        <button (click)="searchCurrency()" class="btn btn-success" type="button" id="button-addon2" style="margin-left:20px">Buscar</button>
+      </div>
+    </form>
+    </div>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Cedula</th>
+        <th scope="col">Indicador</th>
+        <th scope="col">Comentario</th>
+        <th scope="col">Monto Adeudado</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="inflaccion != null">
+      <tr  *ngFor="let infla of inflaccion">
+        <td scope="row">{{infla.cedula}}</td>
+        <td scope="row">{{infla.indicador}}</td>
+        <td scope="row">{{infla.comentario}}</td>
+        <td scope="row">{{infla.montoAdeudado}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="inflaccion.length <= 0" class="col col-12 text-center mt-4">
+    <h4>Escriba una cedula para proceder con la busqueda</h4>
+  </div>
+</div>
